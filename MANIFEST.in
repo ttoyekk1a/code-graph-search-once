@@ -1,0 +1,8 @@
+recursive-include variants *.py *.json
+recursive-include exports *.py
+include tool_schema.json example_graph.json run_graph_find_paths.py
+recursive-include benchmark50 *.py *.json *.jsonl *.csv *.md *.txt *.png
+include benchmark50/Dockerfile.python
+prune benchmark50/graphs
+prune benchmark50/__pycache__
+include scripts/check_mcp.py scripts/check_neighbors50.py tests/data/neighbors50-sha256.json

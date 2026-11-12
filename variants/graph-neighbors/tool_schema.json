@@ -1,0 +1,44 @@
+{
+  "name": "graph_neighbors",
+  "description": "Retrieve code symbols within a bounded number of stored edges of one exact anchor ID. Each candidate has a shortest distance and one original witness edge. Downstream follows source to target; upstream reverses traversal. Check search_complete and output_complete before treating the result as exhaustive.",
+  "parameters": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "anchor_node"
+    ],
+    "properties": {
+      "anchor_node": {
+        "type": "string",
+        "minLength": 1
+      },
+      "direction": {
+        "type": "string",
+        "enum": [
+          "upstream",
+          "downstream"
+        ],
+        "default": "downstream"
+      },
+      "max_hops": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 16,
+        "default": 4
+      },
+      "relation_types": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "output_limit": {
+        "type": "integer",
+        "minimum": 4096,
+        "default": 12000,
+        "description": "Maximum number of characters in the serialized JSON response."
+      }
+    }
+  }
+}
